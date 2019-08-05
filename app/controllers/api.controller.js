@@ -19,11 +19,9 @@ function getComparison(req, res) {
     var kwhPriceDc      = req.query.kwhPriceDc|| 30;
     var kwhPriceAc      = req.query.kwhPriceAc || 40;
     var fuelConsumption = req.query.fuelConsumption || 6;
-    var fuelType        = req.query.fuelType || 0; // 0 = gasoline, 1 = diesel
+    var fuelType        = req.query.fuelType || 1; // 0 = gasoline, 1 = diesel
     var gasolinePrice   = req.query.gasolinePrice || 151;
     var dieselPrice     = req.query.dieselPrice || 127;
-
-    // currently not exposed
     var dcRatio         = req.query.dcRatio || 50;
     var homeChargingRatio = req.query.homeChargingRatio || 50;
     var kwhPriceHome    = req.query.kwhPriceHome || 29;
@@ -37,13 +35,12 @@ function getComparison(req, res) {
     var electricCosts = (electricCostsAc * (100-dcRatio)/100 + electricCostsDc * dcRatio/100)*(1-homeChargingRatio/100)+homeChargingRatio/100*kwhPriceHome*(1-solarChargingRatio/100);
 
     // calculation of combustion costs depending on fuel type
-    if (fuelType===0){
+    if (fuelType==0){
       var combustionCosts = gasolinePrice * fuelConsumption * distancePerYear / 100;
     }
-    if (fuelType===1){
+    if (fuelType==1){
       var combustionCosts = dieselPrice * fuelConsumption * distancePerYear / 100;
     }
-
 
     // savings per year
     var savings  = (combustionCosts - electricCosts)/100; //divided through 100 to achieve €
