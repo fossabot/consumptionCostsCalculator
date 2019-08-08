@@ -17,13 +17,13 @@ define api routes
  */
 // swagger defintions
 /**
-// get coordinates
+// get ConsumptionCostComparison
 /**
  * @swagger
- * /api/v1/getComparison:
+ * /api/v1/getConsumptionCostComparison:
  *   get:
  *     tags:
- *       - calculation
+ *       - ConsumptionCostComparison
  *     description: Returns comparison of costs for e-vehicle vs. combustion vehicle
  *     produces:
  *       - application/json
@@ -59,49 +59,62 @@ define api routes
  *         type: integer
  *         example: 29
  *       - name: dcRatio
- *         description: ratio in percentage of dc charing in comparison to ac charging
+ *         description: ratio in percentage of dc charing in comparison to ac charging, default value 50%
  *         in: "query"
  *         required: false
  *         type: integer
  *         example: 50
  *       - name: homeChargingRatio
- *         description: ratio in percentage of charing at home
+ *         description: ratio in percentage of charing at home, default 50%
  *         in: "query"
  *         required: false
  *         type: integer
  *         example: 50
  *       - name: solarChargingRatio
- *         description: ratio in percentage of home charging done via free solar power
+ *         description: ratio in percentage of home charging done via free solar power, default 0%
  *         in: "query"
  *         required: false
  *         type: integer
  *         example: 0
  *       - name: fuelConsumption
- *         description: consumption value for cobustion vehicle in l per 100km, default 6l
+ *         description: consumption value for cobustion vehicle in l or kg per 100km, default 6l
  *         in: "query"
  *         required: false
  *         type: integer
  *         example: 6
  *       - name: fuelType
- *         description: fuel type either diesel=1 or gasoline=0, default gasoline
+ *         description: fuel type either gasoline, diesel, lpg, cng, default gasoline
  *         in: "query"
  *         required: false
  *         type: string
- *         example: 0
+ *         example: gasoline
+ *       - name: gasolinePrice
+ *         description: price per l gasoline in cent, default 151
+ *         in: "query"
+ *         required: false
+ *         type: integer
+ *         example: 151
  *       - name: dieselPrice
+ *         description: price per l diesel in cent, default 127
+ *         in: "query"
+ *         required: false
+ *         type: integer
+ *         example: 127
+ *       - name: lpgPrice
  *         description: price per l diesel in cent, default
  *         in: "query"
  *         required: false
  *         type: integer
  *         example: 127
- *       - name: gasolinePrice
- *         description: price per l gasoline in cent, default
+ *       - name: cngPriceKg
+ *         description: price per kg cng in cent, default 118
  *         in: "query"
  *         required: false
  *         type: integer
- *         example: 151
+ *         example: 118
+
  *     responses:
  *       200:
- *         description: coordinates and other details about the adress
+ *         description: cost comparison results
  */
-router.get('/api/v1/getComparison', apiController.getComparison);
+router.get('/api/v1/getConsumptionCostComparison', apiController.getConsumptionCostComparison);
