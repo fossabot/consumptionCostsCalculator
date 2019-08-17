@@ -20,7 +20,7 @@ function getConsumptionCostComparison(req, res) {
     var kwhPriceDc          = req.query.kwhPriceDc|| 30;
     var kwhPriceAc          = req.query.kwhPriceAc || 40;
     var fuelConsumption     = req.query.fuelConsumption || 6;
-    var fuelType            = req.query.fuelType || gasoline;
+    var fuelType            = req.query.fuelType || "gasoline";
     var gasolinePrice       = req.query.gasolinePrice || 151;
     var dieselPrice         = req.query.dieselPrice || 127;
     var lpgPrice            = req.query.lpgPrice || 59;
@@ -98,7 +98,7 @@ function consumptionCostComparisonHook(req, res) {
     var kwhPriceDc          = req.body.kwhPriceDc|| 30;
     var kwhPriceAc          = req.body.kwhPriceAc || 40;
     var fuelConsumption     = req.body.fuelConsumption || 6;
-    var fuelType            = req.body.fuelType || gasoline;
+    var fuelType            = req.body.fuelType || "gasoline";
     var gasolinePrice       = req.body.gasolinePrice || 151;
     var dieselPrice         = req.body.dieselPrice || 127;
     var lpgPrice            = req.body.lpgPrice || 59;
