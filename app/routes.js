@@ -139,13 +139,6 @@ router.get('/api/v1/getConsumptionCostComparison', apiController.getConsumptionC
 *     consumes:
 *       - application/json
 *     parameters:
-*       - name: lang
-*         in: query
-*         required: true
-*         description: provide language you want response either de or en
-*         type: string
-*         enum: [de, en]
-*         example: de
 *       - name: data
 *         in: body
 *         required: true
